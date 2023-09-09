@@ -9,4 +9,12 @@ router.get('/notes', (req, res) =>
   })
 );
 
+router.post('/notes', (req, res) => {
+    store.writeNotes(req.body).then((userNote) => {
+        return res.json(userNote)
+    }).catch((err) => {
+        return res.status(500).json(err)
+      })
+})
+
 module.exports = router;
