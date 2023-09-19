@@ -25,6 +25,14 @@ class Store {
             return storeNote;
         })
     }
+    deleteNote(noteId) {
+        return this.getNotes().then((gottenNotes) => {
+            const filterNotes = gottenNotes.filter((note) => {
+                return note.id !== noteId
+            })
+            this.write(filterNotes);
+        })
+    }
 }
 
 module.exports = new Store();
